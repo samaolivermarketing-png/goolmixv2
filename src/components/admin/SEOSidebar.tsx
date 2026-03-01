@@ -38,7 +38,7 @@ export function SEOSidebar({
                         <Search className="w-4 h-4" /> SEO Score
                     </h3>
                     <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${analysis.label === 'Excelente' ? 'bg-green-100 text-green-700' :
-                            analysis.label === 'Bom' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
+                        analysis.label === 'Bom' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'
                         }`}>
                         {analysis.label}
                     </span>
@@ -87,7 +87,9 @@ export function SEOSidebar({
                 <div>
                     <label className="block text-xs font-bold text-gray-500 uppercase mb-1 flex justify-between">
                         Palavra-chave Foco
-                        <Info className="w-3 h-3 cursor-help text-gray-300" title="A palavra-chave que você quer ranquear no Google." />
+                        <span title="A palavra-chave que você quer ranquear no Google.">
+                            <Info className="w-3 h-3 cursor-help text-gray-300" />
+                        </span>
                     </label>
                     <input
                         type="text"
