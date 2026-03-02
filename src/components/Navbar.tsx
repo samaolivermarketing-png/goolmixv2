@@ -52,7 +52,7 @@ export function Navbar() {
         <div className="flex justify-between h-20">
           <div className="flex items-center space-x-2">
             <Link to="/" className="flex-shrink-0 flex items-center">
-              <img src={logo} alt="Gool Mix Concreto" className="h-20 sm:h-24 w-auto transform scale-110 origin-left -translate-x-[26px]" />
+              <img src={logo} alt="Gool Mix Concreto" className="h-20 sm:h-24 w-auto transform scale-110 origin-left -translate-x-[26px]" width="200" height="96" />
             </Link>
           </div>
 
@@ -85,7 +85,7 @@ export function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-navy-900 hover:text-navy-600 focus:outline-none"
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

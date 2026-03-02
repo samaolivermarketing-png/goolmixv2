@@ -67,6 +67,10 @@ export function Home() {
             alt="Caminhão betoneira da Gool Mix Concreto em operação"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            fetchPriority="high"
+            loading="eager"
+            width="1920"
+            height="1080"
           />
         </div>
 
@@ -99,7 +103,16 @@ export function Home() {
             <div className="mt-10 flex items-center gap-4 text-sm font-medium text-navy-600">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
-                  <img key={i} className="inline-block h-10 w-10 rounded-full ring-2 ring-white" src={`https://picsum.photos/seed/user${i}/100/100`} alt="Cliente" referrerPolicy="no-referrer" />
+                  <img
+                    key={i}
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                    src={`https://picsum.photos/seed/user${i}/100/100`}
+                    alt="Cliente"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                    width="40"
+                    height="40"
+                  />
                 ))}
               </div>
               <div>
@@ -180,6 +193,9 @@ export function Home() {
                   src={bombaImg}
                   alt="Concretagem com equipamento e bomba"
                   className="object-cover w-full h-64"
+                  loading="lazy"
+                  width="800"
+                  height="450"
                 />
                 <div className="absolute inset-0 bg-navy-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
               </div>
@@ -214,6 +230,9 @@ export function Home() {
                   src={concretoconvencionalImg}
                   alt="Envio de concreto convencional"
                   className="object-cover w-full h-64"
+                  loading="lazy"
+                  width="800"
+                  height="450"
                 />
                 <div className="absolute inset-0 bg-navy-900/10 group-hover:bg-transparent transition-colors duration-300"></div>
               </div>

@@ -99,6 +99,9 @@ export function BlogPost() {
               alt={post.title}
               className="w-full h-auto object-cover max-h-[500px]"
               referrerPolicy="no-referrer"
+              loading="lazy"
+              width="800"
+              height="500"
             />
           </div>
 

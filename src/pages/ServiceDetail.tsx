@@ -74,6 +74,9 @@ export function ServiceDetail() {
             alt={service.title}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
+            loading="eager"
+            width="1200"
+            height="600"
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -123,6 +126,9 @@ export function ServiceDetail() {
                   alt={service.title}
                   className="w-full h-auto object-cover max-h-[400px]"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  width="1200"
+                  height="600"
                 />
                 <div className="p-8 md:p-12">
                   <h2 className="text-3xl font-bold text-navy-900 mb-6">Por que escolher este serviço?</h2>

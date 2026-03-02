@@ -87,6 +87,9 @@ export function Services() {
                   src={bombaImg}
                   alt="Serviço de concretagem com bomba"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                 />
               </div>
             </div>
@@ -100,6 +103,9 @@ export function Services() {
                   src={concretoconvencionalImg}
                   alt="Caminhão betoneira descarregando concreto"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                 />
               </div>
               <div className="p-10 lg:p-16 flex flex-col justify-center order-1 md:order-2">
