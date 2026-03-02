@@ -3,7 +3,7 @@ import { SEO } from '../components/SEO';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { storage } from '../utils/storage';
-import concretoconvencionalImg from '../assets/concretoconvencional.jpeg';
+import concretoConvencional from '../assets/concretoconvencional.jpg';
 import bombaImg from '../assets/bomba.jpg';
 
 export function Services() {
@@ -100,7 +100,7 @@ export function Services() {
             <div className="grid md:grid-cols-2">
               <div className="bg-gray-200 h-64 md:h-auto relative order-2 md:order-1">
                 <img
-                  src={concretoconvencionalImg}
+                  src={concretoConvencional}
                   alt="Caminhão betoneira descarregando concreto"
                   className="w-full h-full object-cover"
                   loading="lazy"

@@ -3,9 +3,9 @@ import { SEO } from '../components/SEO';
 import { CheckCircle2, Clock, ShieldCheck, ThumbsUp, ArrowRight, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { storage } from '../utils/storage';
-import heroBg from '../assets/hero.png';
+import heroBg from '../assets/hero.jpg';
 import bombaImg from '../assets/bomba.jpg';
-import concretoconvencionalImg from '../assets/concretoconvencional.jpeg';
+import concretoImg from '../assets/concretoconvencional.jpg';
 
 export function Home() {
   const [phones, setPhones] = useState(storage.getPhones());
@@ -28,7 +28,7 @@ export function Home() {
           "image": "https://picsum.photos/seed/goolmix/1200/800",
           "@id": "https://goolmixconcreto.com.br",
           "url": "https://goolmixconcreto.com.br",
-          "telephone": `+55${phones.whatsapp}`,
+          "telephone": `+ 55${phones.whatsapp} `,
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Simões Filho",
@@ -227,7 +227,7 @@ export function Home() {
             <div className="group rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300">
               <div className="aspect-w-16 aspect-h-9 bg-gray-200 relative">
                 <img
-                  src={concretoconvencionalImg}
+                  src={concretoImg}
                   alt="Envio de concreto convencional"
                   className="object-cover w-full h-64"
                   loading="lazy"
