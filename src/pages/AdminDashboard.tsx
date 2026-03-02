@@ -18,10 +18,15 @@ import {
 } from 'lucide-react';
 import { storage, PhoneData, BlogArticle } from '../utils/storage';
 import { SEO } from '../components/SEO';
-import { SEOEditor, SEOEditorRef } from '../components/admin/SEOEditor';
-import { SEOSidebar } from '../components/admin/SEOSidebar';
-import { MediaLibrary } from '../components/admin/MediaLibrary';
 import { seoUtils, SEOAnalysis } from '../utils/seoUtils';
+
+// Lazy load heavy admin components
+const SEOEditor = React.lazy(() => import('../components/admin/SEOEditor').then(m => ({ default: m.SEOEditor })));
+const SEOSidebar = React.lazy(() => import('../components/admin/SEOSidebar').then(m => ({ default: m.SEOSidebar })));
+const MediaLibrary = React.lazy(() => import('../components/admin/MediaLibrary').then(m => ({ default: m.MediaLibrary })));
+
+import { SEOEditorRef } from '../components/admin/SEOEditor';
+
 import {
     Download,
     Link2,
@@ -403,25 +408,29 @@ export function AdminDashboard() {
 
                                         <div className="space-y-1">
                                             <label className="block text-sm font-bold text-gray-700 ml-1">Conteúdo do Artigo</label>
-                                            <SEOEditor
-                                                ref={editorRef}
-                                                content={currentArticle.content || ''}
-                                                onChange={(html) => handleUpdateArticleField('content', html)}
-                                                onOpenMediaLibrary={() => { setMediaTarget('editor'); setIsMediaLibraryOpen(true); }}
-                                            />
+                                            <React.Suspense fallback={<div className="h-64 flex items-center justify-center bg-gray-50 rounded-lg border-2 border-dashed border-gray-200"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-navy-900"></div></div>}>
+                                                <SEOEditor
+                                                    ref={editorRef}
+                                                    content={currentArticle.content || ''}
+                                                    onChange={(html) => handleUpdateArticleField('content', html)}
+                                                    onOpenMediaLibrary={() => { setMediaTarget('editor'); setIsMediaLibraryOpen(true); }}
+                                                />
+                                            </React.Suspense>
                                         </div>
                                     </div>
 
                                     {/* Right Column: SEO Sidebar */}
                                     <div className="col-span-12 lg:col-span-4">
-                                        <SEOSidebar
-                                            analysis={seoAnalysis || { score: 0, label: 'Precisa de melhorias', checklist: [], wordCount: 0, readingTime: '1 min' }}
-                                            metaTitle={currentArticle.metaTitle || ''}
-                                            metaDescription={currentArticle.metaDescription || ''}
-                                            slug={currentArticle.slug || ''}
-                                            keyword={currentArticle.focusKeyword || ''}
-                                            onUpdateField={handleUpdateArticleField}
-                                        />
+                                        <React.Suspense fallback={<div className="h-96 bg-gray-50 animate-pulse rounded-xl"></div>}>
+                                            <SEOSidebar
+                                                analysis={seoAnalysis || { score: 0, label: 'Precisa de melhorias', checklist: [], wordCount: 0, readingTime: '1 min' }}
+                                                metaTitle={currentArticle.metaTitle || ''}
+                                                metaDescription={currentArticle.metaDescription || ''}
+                                                slug={currentArticle.slug || ''}
+                                                keyword={currentArticle.focusKeyword || ''}
+                                                onUpdateField={handleUpdateArticleField}
+                                            />
+                                        </React.Suspense>
 
                                         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mt-6 space-y-4">
                                             <h3 className="font-bold text-navy-900 flex items-center gap-2">
@@ -567,18 +576,20 @@ export function AdminDashboard() {
             </main>
 
             {/* Media Library Modal */}
-            <MediaLibrary
-                isOpen={isMediaLibraryOpen}
-                onClose={() => { setIsMediaLibraryOpen(false); setMediaTarget(null); }}
-                onSelect={(url) => {
-                    if (mediaTarget === 'cover') {
-                        handleUpdateArticleField('image', url);
-                    } else if (mediaTarget === 'editor') {
-                        editorRef.current?.insertImage(url);
-                    }
-                }}
-                title={mediaTarget === 'cover' ? "Selecionar Capa do Artigo" : "Biblioteca de Mídia"}
-            />
+            <React.Suspense fallback={null}>
+                <MediaLibrary
+                    isOpen={isMediaLibraryOpen}
+                    onClose={() => { setIsMediaLibraryOpen(false); setMediaTarget(null); }}
+                    onSelect={(url) => {
+                        if (mediaTarget === 'cover') {
+                            handleUpdateArticleField('image', url);
+                        } else if (mediaTarget === 'editor') {
+                            editorRef.current?.insertImage(url);
+                        }
+                    }}
+                    title={mediaTarget === 'cover' ? "Selecionar Capa do Artigo" : "Biblioteca de Mídia"}
+                />
+            </React.Suspense>
         </div>
     );
 }
