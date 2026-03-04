@@ -17,6 +17,8 @@ export default defineConfig(({ mode }) => {
       target: 'es2015',
       cssMinify: true,
       chunkSizeWarningLimit: 600,
+      assetsInlineLimit: 4096,
+      reportCompressedSize: false,
       esbuildOptions: {
         drop: ['console', 'debugger'],
         legalComments: 'none',

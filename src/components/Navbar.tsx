@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, MapPin } from 'lucide-react';
 import clsx from 'clsx';
-import logo from '../assets/GoolMixConcreto.png';
+import logo from '../assets/GoolMixConcreto-opt.webp';
 
 import { storage } from '../utils/storage';
 

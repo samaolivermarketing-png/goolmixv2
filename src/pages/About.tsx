@@ -1,6 +1,6 @@
 import { SEO } from '../components/SEO';
 import { Award, Users, Target, ShieldCheck } from 'lucide-react';
-import historyImg from '../assets/responsabilidade.jpg';
+import historyImg from '../assets/responsabilidade-opt.webp';
 
 export function About() {
   return (

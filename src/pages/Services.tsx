@@ -3,8 +3,8 @@ import { SEO } from '../components/SEO';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { storage } from '../utils/storage';
-import concretoConvencional from '../assets/concretoconvencional.jpg';
-import bombaImg from '../assets/bomba.jpg';
+import concretoConvencional from '../assets/concretoconvencional-opt.webp';
+import bombaImg from '../assets/bomba-opt.webp';
 
 export function Services() {
   const [phones, setPhones] = useState(storage.getPhones());

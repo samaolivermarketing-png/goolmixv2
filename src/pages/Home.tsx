@@ -3,9 +3,9 @@ import { SEO } from '../components/SEO';
 import { CheckCircle2, Clock, ShieldCheck, ThumbsUp, ArrowRight, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { storage } from '../utils/storage';
-import heroBg from '../assets/hero.jpg';
-import bombaImg from '../assets/bomba.jpg';
-import concretoImg from '../assets/concretoconvencional.jpg';
+import heroBg from '../assets/hero-opt.webp';
+import bombaImg from '../assets/bomba-opt.webp';
+import concretoImg from '../assets/concretoconvencional-opt.webp';
 
 export function Home() {
   const [phones, setPhones] = useState(storage.getPhones());
