@@ -13,15 +13,26 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
+      minify: 'esbuild',
+      target: 'es2015',
+      cssMinify: true,
+      chunkSizeWarningLimit: 600,
+      esbuildOptions: {
+        drop: ['console', 'debugger'],
+        legalComments: 'none',
+        minifyIdentifiers: true,
+        minifySyntax: true,
+        minifyWhitespace: true,
+      },
       rollupOptions: {
         output: {
           manualChunks: {
             'vendor-react': ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
             'vendor-supabase': ['@supabase/supabase-js'],
-            'vendor-ui': ['lucide-react', 'clsx']
-          }
-        }
-      }
+            'vendor-ui': ['lucide-react', 'clsx'],
+          },
+        },
+      },
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
