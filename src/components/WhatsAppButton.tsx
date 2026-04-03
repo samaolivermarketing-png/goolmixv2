@@ -1,14 +1,7 @@
-import { useState, useEffect } from 'react';
-import { storage } from '../utils/storage';
+import { usePhones } from '../hooks/usePhones';
 
 export function WhatsAppButton() {
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
 
   return (
     <a

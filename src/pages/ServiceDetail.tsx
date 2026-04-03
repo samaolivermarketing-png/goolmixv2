@@ -1,18 +1,11 @@
-import { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { useParams, Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, ChevronRight, ShieldCheck, Clock, ThumbsUp } from 'lucide-react';
-import { storage } from '../utils/storage';
+import { usePhones } from '../hooks/usePhones';
 
 export function ServiceDetail() {
   const { id } = useParams();
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
 
   // Mock data based on ID (In a real app, fetch from CMS/API)
   const service = {

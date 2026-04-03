@@ -1,19 +1,12 @@
-import { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { storage } from '../utils/storage';
+import { usePhones } from '../hooks/usePhones';
 import concretoConvencional from '../assets/concretoconvencional-opt.webp';
 import bombaImg from '../assets/bomba-opt.webp';
 
 export function Services() {
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
   return (
     <>
       <SEO

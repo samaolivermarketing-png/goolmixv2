@@ -1,19 +1,13 @@
-import { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
 
+import { usePhones } from '../hooks/usePhones';
 import { storage } from '../utils/storage';
 
 export function BlogPost() {
   const { id } = useParams();
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
   const post = storage.getArticles().find(a => a.id === id);
 
   if (!post) {

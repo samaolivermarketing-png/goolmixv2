@@ -1,16 +1,9 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, Mail, Clock, ChevronRight } from 'lucide-react';
-import { storage } from '../utils/storage';
+import { usePhones } from '../hooks/usePhones';
 
 export function Footer() {
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
 
   return (
     <footer className="bg-navy-900 text-white pt-16 pb-8 border-t-4 border-gray-300">

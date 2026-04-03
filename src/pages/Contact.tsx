@@ -1,16 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SEO } from '../components/SEO';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-import { storage } from '../utils/storage';
+import { usePhones } from '../hooks/usePhones';
 
 export function Contact() {
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
   return (
     <>
       <SEO

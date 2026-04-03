@@ -1,20 +1,13 @@
-import { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { CheckCircle2, Clock, ShieldCheck, ThumbsUp, ArrowRight, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { storage } from '../utils/storage';
+import { usePhones } from '../hooks/usePhones';
 import heroBg from '../assets/hero-opt.webp';
 import bombaImg from '../assets/bomba-opt.webp';
 import concretoImg from '../assets/concretoconvencional-opt.webp';
 
 export function Home() {
-  const [phones, setPhones] = useState(storage.getPhones());
-
-  useEffect(() => {
-    const handleUpdate = () => setPhones(storage.getPhones());
-    window.addEventListener('storage-update', handleUpdate);
-    return () => window.removeEventListener('storage-update', handleUpdate);
-  }, []);
+  const phones = usePhones();
   return (
     <>
       <SEO
